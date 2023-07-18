@@ -1,0 +1,69 @@
+<div class="btn sign-in">로그인</div>
+이렇게 클래스는 형제 클래스를 둘수 있다
+
+css 속성정리
+
+
+예제 1 ///////////////////////////////
+html
+<div class="container">
+  <div class="item"></div>
+</div>
+
+css
+.container {
+  width: 500px;
+  background-color: royalblue;
+}
+.container .item {
+  width: 100%;
+  height: 0;
+  padding-top: 50%;
+}
+를 실행 하면 item의 높이가 0이지만 padding 값에 의해서 50%, 부모 width의 50% 만큼의 높이가 정해진다.
+이는 보통 영상 재생시 많이 사용하는데 16:9 비율의 경우 100%:56.25% = 16:9 비율로 출력 가능하다
+위의 표는 두장의 레이어로 되어 있다. 아래에 container레이어, 위에 item 레이어.
+
+//////////////////////////////////
+
+예제 2 카드 앞 뒤 뒤집기 //////////////////////////
+html
+<div class="container">
+  <div class="item front">앞</div>
+  <div class="item back">뒤</div>
+  
+</div>
+
+css
+body{
+  padding: 50px;
+  align-item: center;
+}
+.container {
+  width: 100px;
+  height: 100px;
+  perspective: 100px;  
+}
+.container .item {
+  width: 100px;
+  height: 100px;
+  border: 4px solid red;
+  box-sizing: border-box;
+  font-size: 60px;
+  backface-visibility: hidden;
+  transition: 1s;
+}
+.container .item.front {
+  position: absolute;
+  transform: rotateY(0deg);
+}
+.container:hover .item.front {
+  transform: rotateY(180deg);
+}
+.container .item.back {
+  transform: rotateY(-180deg);
+}
+.container:hover .item.back {
+  transform: rotateY(0deg);
+}
+//////////////////////////////////////////////
